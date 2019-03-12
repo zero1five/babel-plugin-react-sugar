@@ -18,6 +18,7 @@ const VFor = 'v-for';
 
 import {bindHelper} from './helper/bind';
 import {loopHelper} from './helper/loop';
+import {autoKeyHelper} from './helper/autoKey';
 
 import {getAndRemoveAttr} from './utils/utils';
 
@@ -28,7 +29,10 @@ export default declare((api, options) => {
     JSXElement(nodePath, state) {
       const {bindAttrName = VModel, loopAttrName = VFor} = this.opts;
       let bindingValue = getAndRemoveAttr(nodePath.node, bindAttrName),
-        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName);
+        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName),
+        needKey =
+          Array.isArray(nodePath.node.children) &&
+          nodePath.node.children.length;
 
       // v-model
       while (bindingValue) {
@@ -42,6 +46,12 @@ export default declare((api, options) => {
           loopHelper(nodePath, loopAttrValue, loopAttrName)
         );
         loopAttrValue = false;
+      }
+
+      // auto add key
+      while (needKey) {
+        nodePath.replaceWith(autoKeyHelper(nodePath));
+        needKey = false;
       }
     },
   };

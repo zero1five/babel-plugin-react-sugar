@@ -17,6 +17,9 @@ export default class App extends PureComponent {
         <ul>
           <li v-for="item in this.state.items">{'item.message'}</li>
         </ul>
+        {[1, 2, 3].map(x => (
+          <p>{x}</p>
+        ))}
       </div>
     );
   }

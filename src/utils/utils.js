@@ -17,3 +17,20 @@ export const getAndRemoveAttr = (jsxElement, attrName) => {
 
   return value;
 };
+
+export const setAttr = (jsxElement, attr) => {
+  const {attributes} = jsxElement.openingElement;
+
+  attributes.push(attr);
+  jsxElement.openingElement.attributes = attributes;
+
+  return jsxElement;
+};
+
+export function randomStr() {
+  return Math.random()
+    .toString(36)
+    .substring(7)
+    .split('')
+    .join('.');
+}

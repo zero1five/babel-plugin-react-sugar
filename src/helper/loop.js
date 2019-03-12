@@ -6,7 +6,6 @@ export const loopHelper = (nodePath, loopValue, attrName) => {
   /**
    *
    */
-
   let wrappedExpr = [];
 
   return wrappedExpr;
