@@ -1,5 +1,5 @@
 {
-  "name": "react-sugar",
+  "name": "babel-plugin-react-sugar",
   "version": "1.0.0",
   "description": "React-sugar",
   "main": "lib/cjs/index.js",
