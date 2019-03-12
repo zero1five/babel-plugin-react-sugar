@@ -2,26 +2,6 @@ import * as types from 'babel-types';
 const {addDefault} = require('@babel/helper-module-imports');
 const path = require('path');
 
-export const getAndRemoveBindingAttr = (jsxElement, attrName) => {
-  const {attributes} = jsxElement.openingElement;
-
-  let value;
-
-  const index = attributes.findIndex((attr, index) => {
-    if (attr.name && attr.name.name === attrName) {
-      value = attr.value;
-
-      return true;
-    }
-  });
-
-  if (index !== -1) {
-    attributes.splice(index, 1);
-  }
-
-  return value;
-};
-
 const extractMemberExpression = memberExpr => {
   /**
    * left-most item

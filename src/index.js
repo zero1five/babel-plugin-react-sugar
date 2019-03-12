@@ -16,7 +16,10 @@ import {addDefault} from '@babel/helper-module-imports';
 const VModel = 'v-model';
 const VFor = 'v-for';
 
-import {bindHelper, getAndRemoveBindingAttr} from './helper/bind';
+import {bindHelper} from './helper/bind';
+import {loopHelper} from './helper/loop';
+
+import {getAndRemoveAttr} from './utils/utils';
 
 export default declare((api, options) => {
   api.assertVersion(7);
@@ -24,11 +27,21 @@ export default declare((api, options) => {
   const visitor = {
     JSXElement(nodePath, state) {
       const {bindAttrName = VModel, loopAttrName = VFor} = this.opts;
-      let bindingValue = getAndRemoveBindingAttr(nodePath.node, bindAttrName);
+      let bindingValue = getAndRemoveAttr(nodePath.node, bindAttrName),
+        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName);
 
+      // v-model
       while (bindingValue) {
         nodePath.replaceWith(bindHelper(nodePath, bindingValue, bindAttrName));
         bindingValue = false;
+      }
+
+      // v-for
+      while (loopAttrValue) {
+        nodePath.replaceWithMultiple(
+          loopHelper(nodePath, loopAttrValue, loopAttrName)
+        );
+        loopAttrValue = false;
       }
     },
   };

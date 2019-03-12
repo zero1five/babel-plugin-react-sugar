@@ -5,6 +5,7 @@ export default class App extends PureComponent {
     super(props);
     this.state = {
       value: '',
+      items: [{message: 'Foo'}, {message: 'Bar'}],
     };
   }
 
@@ -13,6 +14,9 @@ export default class App extends PureComponent {
       <div>
         <p>{this.state.value}</p>
         <input v-model={this.state.value} />
+        <ul>
+          <li v-for="item in this.state.items">{'item.message'}</li>
+        </ul>
       </div>
     );
   }
