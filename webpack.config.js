@@ -76,10 +76,10 @@ module.exports = {
             ],
             plugins: [
               require.resolve('@babel/plugin-transform-runtime'),
-              [ require.resolve('./bind.js'), { attrName: 'v-on' }]
+              [require.resolve('./lib/cjs')],
             ],
           },
-        }
+        },
       ],
       threadPool: happyThreadPool,
       verbose: false,
