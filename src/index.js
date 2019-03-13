@@ -9,7 +9,7 @@
 
 import {declare} from '@babel/helper-plugin-utils';
 import helper from '@babel/helper-builder-react-jsx';
-import * as types from 'babel-types';
+import * as t from 'babel-types';
 import jsx from 'babel-plugin-syntax-jsx';
 import {addDefault} from '@babel/helper-module-imports';
 
@@ -20,7 +20,7 @@ import {bindHelper} from './helper/bind';
 import {loopHelper} from './helper/loop';
 import {autoKeyHelper} from './helper/autoKey';
 
-import {getAndRemoveAttr} from './utils/utils';
+import {getAndRemoveAttr, randomStr} from './utils/utils';
 
 export default declare((api, options) => {
   api.assertVersion(7);
@@ -46,12 +46,6 @@ export default declare((api, options) => {
           loopHelper(nodePath, loopAttrValue, loopAttrName)
         );
         loopAttrValue = false;
-      }
-
-      // auto add key
-      while (needKey) {
-        nodePath.replaceWith(autoKeyHelper(nodePath));
-        needKey = false;
       }
     },
   };

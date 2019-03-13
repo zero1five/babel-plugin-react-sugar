@@ -1,19 +1,13 @@
 import * as types from 'babel-types';
+import esutils from 'esutils';
 import {setAttr, randomStr} from '../utils/utils';
 const {addDefault} = require('@babel/helper-module-imports');
 const path = require('path');
 
 export const autoKeyHelper = nodePath => {
-  let wrappedExpr = types.callExpression(
-    addDefault(nodePath, path.resolve('./lib/cjs/runtime/key'), {
-      nameHint: 'addKey',
-    }),
-    [nodePath.node]
+  let wrappedExpr = types.expressionStatement(
+    types.stringLiteral('(Enjoy singing the rest of the song in your head)')
   );
-
-  if (nodePath.parent.type === 'JSXElement') {
-    wrappedExpr = types.jSXExpressionContainer(wrappedExpr);
-  }
 
   return wrappedExpr;
 };
