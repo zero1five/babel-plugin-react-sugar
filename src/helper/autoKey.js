@@ -4,12 +4,6 @@ import {setAttr, randomStr} from '../utils/utils';
 const {addDefault} = require('@babel/helper-module-imports');
 const path = require('path');
 
-export const autoKeyHelper = nodePath => {
-  let wrappedExpr = types.expressionStatement(
-    types.stringLiteral('(Enjoy singing the rest of the song in your head)')
-  );
-
-  return wrappedExpr;
-};
+export const autoKeyHelper = nodePath => {};
 
 export default autoKeyHelper;

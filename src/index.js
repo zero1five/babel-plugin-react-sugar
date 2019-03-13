@@ -29,10 +29,7 @@ export default declare((api, options) => {
     JSXElement(nodePath, state) {
       const {bindAttrName = VModel, loopAttrName = VFor} = this.opts;
       let bindingValue = getAndRemoveAttr(nodePath.node, bindAttrName),
-        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName),
-        needKey =
-          Array.isArray(nodePath.node.children) &&
-          nodePath.node.children.length;
+        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName);
 
       // v-model
       while (bindingValue) {
@@ -47,6 +44,15 @@ export default declare((api, options) => {
         );
         loopAttrValue = false;
       }
+
+      // auto add key
+      // while(needKey) {
+      //   // nodePath.node.openingElement.attributes.push(t.jSXAttribute(t.jSXIdentifier('key'), t.stringLiteral(randomStr())))
+      //   nodePath.replaceWith(
+      //     autoKeyHelper(nodePath)
+      //   );
+      //   needKey = false;
+      // }
     },
   };
 
