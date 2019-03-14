@@ -6,6 +6,7 @@ export default class App extends PureComponent {
     this.state = {
       value: '',
       items: [{message: 'Foo'}, {message: 'Bar'}],
+      onShow: true,
     };
   }
 
@@ -25,12 +26,18 @@ export default class App extends PureComponent {
         <p>{this.state.value}</p>
         <input v-model={this.state.value} />
         <ul>
-          <li for={item in this.state.items}>{item.message}</li>
+          <li for={item in this.state.items}>
+            <p>{item.message}</p>
+            <p>{item.message ? 'true' : 'false'}</p>
+          </li>
         </ul>
         <button onClick={this.addHandle}>add</button>
         <button onClick={this.decreaseHandle}>decrease</button>
         <hr />
-        <Self />
+        <Self v-if={this.state.onShow} />
+        <button onClick={() => this.setState({onShow: !this.state.onShow})}>
+          {this.state.onShow ? 'onShow' : 'onFalse'}
+        </button>
       </div>
     );
   }

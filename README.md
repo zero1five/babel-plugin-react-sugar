@@ -30,8 +30,19 @@ export default class App extends PureComponent {
     this.state = {
       value: '',
       items: [{message: 'Foo'}, {message: 'Bar'}],
+      onShow: true
     };
   }
+
+  addHandle = () => {
+    const {items} = this.state;
+    this.setState({items: [...items, {message: 'Tail'}]});
+  };
+
+  decreaseHandle = () => {
+    const {items} = this.state;
+    this.setState({item: [items.pop()]});
+  };
 
   render() {
     return (
@@ -39,12 +50,24 @@ export default class App extends PureComponent {
         <p>{this.state.value}</p>
         <input v-model={this.state.value} />
         <ul>
-          <li v-for={item in this.state.items}>
-            {item.message}
+          <li for={item in this.state.items}>
+            <p>{item.message}</p>
+            <p>{item.message ? 'true' : 'false'}</p>
           </li>
         </ul>
+        <button onClick={this.addHandle}>add</button>
+        <button onClick={this.decreaseHandle}>decrease</button>
+        <hr />
+        <Self v-if={this.state.onShow} />
+        <button onClick={() => this.setState({ onShow: !this.state.onShow })}>{this.state.onShow ? 'onShow' : 'onFalse'}</button>
       </div>
     );
+  }
+}
+
+class Self extends PureComponent {
+  render() {
+    return [<span>1</span>, <span>2</span>];
   }
 }
 ```

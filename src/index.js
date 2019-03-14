@@ -13,6 +13,7 @@ import {declare} from '@babel/helper-plugin-utils';
 
 const VModel = 'v-model';
 const VFor = 'v-for';
+const VIf = 'v-if';
 
 import {bindHelper} from './helper/bind';
 import {loopHelper} from './helper/loop';
@@ -24,9 +25,14 @@ export default declare((api, options) => {
 
   const visitor = {
     JSXElement(nodePath, state) {
-      const {bindAttrName = VModel, loopAttrName = VFor} = this.opts;
+      const {
+        bindAttrName = VModel,
+        loopAttrName = VFor,
+        ifAttrName = VIf,
+      } = this.opts;
       let bindingValue = getAndRemoveAttr(nodePath.node, bindAttrName),
-        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName);
+        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName),
+        ifAttrValue = getAndRemoveAttr(nodePath.node, ifAttrName);
 
       // v-model
       while (bindingValue) {
@@ -40,6 +46,16 @@ export default declare((api, options) => {
           loopHelper(nodePath, loopAttrValue, loopAttrName)
         );
         loopAttrValue = false;
+      }
+
+      // v-if
+      if (ifAttrValue) {
+        nodePath.replaceWith(
+          t.ifStatement(
+            ifAttrValue.expression,
+            t.returnStatement(nodePath.node)
+          )
+        );
       }
     },
     ArrowFunctionExpression(path, state) {
