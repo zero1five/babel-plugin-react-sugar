@@ -76,6 +76,7 @@ module.exports = {
             ],
             plugins: [
               require.resolve('@babel/plugin-transform-runtime'),
+              require.resolve('@babel/plugin-proposal-class-properties'),
               [require.resolve('./lib/cjs')],
             ],
           },

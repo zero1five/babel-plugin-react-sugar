@@ -9,6 +9,16 @@ export default class App extends PureComponent {
     };
   }
 
+  addHandle = () => {
+    const {items} = this.state;
+    this.setState({items: [...items, {message: 'Tail'}]});
+  };
+
+  decreaseHandle = () => {
+    const {items} = this.state;
+    this.setState({item: [items.pop()]});
+  };
+
   render() {
     return (
       <div>
@@ -17,6 +27,9 @@ export default class App extends PureComponent {
         <ul>
           <li v-for={item in this.state.items}>{item.message}</li>
         </ul>
+        <button onClick={this.addHandle}>add</button>
+        <button onClick={this.decreaseHandle}>decrease</button>
+        <hr />[<span>1</span>, <span>2</span>]
       </div>
     );
   }
