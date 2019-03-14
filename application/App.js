@@ -25,7 +25,7 @@ export default class App extends PureComponent {
         <p>{this.state.value}</p>
         <input v-model={this.state.value} />
         <ul>
-          <li v-for={item in this.state.items}>{item.message}</li>
+          <li for={item in this.state.items}>{item.message}</li>
         </ul>
         <button onClick={this.addHandle}>add</button>
         <button onClick={this.decreaseHandle}>decrease</button>

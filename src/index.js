@@ -7,18 +7,15 @@
  * 自动添加 key
  */
 
-import {declare} from '@babel/helper-plugin-utils';
-import helper from '@babel/helper-builder-react-jsx';
 import * as t from 'babel-types';
 import jsx from 'babel-plugin-syntax-jsx';
-import {addDefault} from '@babel/helper-module-imports';
+import {declare} from '@babel/helper-plugin-utils';
 
 const VModel = 'v-model';
 const VFor = 'v-for';
 
 import {bindHelper} from './helper/bind';
 import {loopHelper} from './helper/loop';
-import {autoKeyHelper} from './helper/autoKey';
 
 import {getAndRemoveAttr, randomStr, setAttr} from './utils/utils';
 
