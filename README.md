@@ -1,5 +1,5 @@
 # React-sugar
-在react里提供 v-for、v-model、 自动绑定key 的语法糖。
+在react里提供 v-for、v-model、v-if、 自动绑定key 的语法糖。
 
 ## Usage
 
