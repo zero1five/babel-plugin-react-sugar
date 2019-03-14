@@ -29,8 +29,7 @@ export default declare((api, options) => {
     JSXElement(nodePath, state) {
       const {bindAttrName = VModel, loopAttrName = VFor} = this.opts;
       let bindingValue = getAndRemoveAttr(nodePath.node, bindAttrName),
-        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName),
-        needKey = !!nodePath.inList;
+        loopAttrValue = getAndRemoveAttr(nodePath.node, loopAttrName);
 
       // v-model
       while (bindingValue) {
@@ -50,7 +49,6 @@ export default declare((api, options) => {
       if (path.node.body.type !== 'JSXElement') {
         return;
       }
-      // path.node.params.push(t.identifier('index'));
       path.node.body.openingElement.attributes.push(
         t.jSXAttribute(
           t.jSXIdentifier('key'),
