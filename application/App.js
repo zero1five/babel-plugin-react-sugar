@@ -29,8 +29,15 @@ export default class App extends PureComponent {
         </ul>
         <button onClick={this.addHandle}>add</button>
         <button onClick={this.decreaseHandle}>decrease</button>
-        <hr />[<span>1</span>, <span>2</span>]
+        <hr />
+        <Self />
       </div>
     );
+  }
+}
+
+class Self extends PureComponent {
+  render() {
+    return [<span>1</span>, <span>2</span>];
   }
 }

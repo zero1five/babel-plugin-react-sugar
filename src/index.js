@@ -20,7 +20,7 @@ import {bindHelper} from './helper/bind';
 import {loopHelper} from './helper/loop';
 import {autoKeyHelper} from './helper/autoKey';
 
-import {getAndRemoveAttr, randomStr} from './utils/utils';
+import {getAndRemoveAttr, randomStr, setAttr} from './utils/utils';
 
 export default declare((api, options) => {
   api.assertVersion(7);
@@ -55,6 +55,23 @@ export default declare((api, options) => {
           t.JSXExpressionContainer(t.identifier('index'))
         )
       );
+    },
+    ArrayExpression(path, state) {
+      if (
+        path.node.elements[0] &&
+        path.node.elements[0].type === 'JSXElement'
+      ) {
+        path.node.elements.forEach(element => {
+          const ranStr = randomStr();
+          setAttr(
+            element,
+            t.jSXAttribute(
+              t.jSXIdentifier('key'),
+              t.JSXExpressionContainer(t.stringLiteral(ranStr))
+            )
+          );
+        });
+      }
     },
   };
 
