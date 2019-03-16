@@ -23,7 +23,7 @@ npm i babel-plugin-react-sugar --save-dev
 
 ## Example
 
-#### v-model
+### v-model
 
 ```jsx
 export default class App extends PureComponent {
@@ -70,7 +70,7 @@ render() {
 }
 ```
 
-#### v-for
+### v-for
 
 ```jsx
 export default class App extends PureComponent {
@@ -107,7 +107,7 @@ export default class App extends PureComponent {
 }
 ```
 
-#### v-if 
+### v-if 
 
 ```jsx
 export default class App extends PureComponent {
@@ -146,3 +146,22 @@ class Self extends PureComponent {
   ]
 }
 ```
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `yarn run commit`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## Author
+
+**react-sugar** © [zero1five](https://github.com/zero1five), Released under the [MIT](./LICENSE) License.<br>
+Authored and maintained by zero1five.
+
+> [github.com/zero1five](https://github.com/zero1five) · GitHub [@zero1five](https://github.com/zero1five) · Twitter [@zero1five](https://twitter.com/zero1five)
+
+## License
+
+[MIT](https://github.com/zero1five/react-sugar/blob/master/LICENSE) &copy; zero1five
