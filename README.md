@@ -50,7 +50,7 @@ export default class App extends PureComponent {
         <p>{this.state.value}</p>
         <input v-model={this.state.value} />
         <ul>
-          <li for={item in this.state.items}>
+          <li v-for={item in this.state.items}>
             <p>{item.message}</p>
             <p>{item.message ? 'true' : 'false'}</p>
           </li>

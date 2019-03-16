@@ -26,7 +26,7 @@ export default class App extends PureComponent {
         <p>{this.state.value}</p>
         <input v-model={this.state.value} />
         <ul>
-          <li for={item in this.state.items} key={item.message}>
+          <li v-for={item in this.state.items} key={item.message}>
             <p>{item.message}</p>
             <p>{item.message ? 'true' : 'false'}</p>
           </li>
@@ -34,9 +34,7 @@ export default class App extends PureComponent {
         <button onClick={this.addHandle}>add</button>
         <button onClick={this.decreaseHandle}>decrease</button>
         <hr />
-        {[1, 2, 3].map(x => (
-          <p>{x}</p>
-        ))}
+        {[1, 2, 3].map(x => [<p>{x}</p>, <p>second element</p>])}
         <Self v-if={this.state.onShow} />
         <button onClick={() => this.setState({onShow: !this.state.onShow})}>
           {this.state.onShow ? 'onShow' : 'onFalse'}
