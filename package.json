@@ -38,7 +38,6 @@
     "@commitlint/read": "^7.1.2",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
-    "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-register": "^6.26.0",
     "clean-webpack-plugin": "^1.0.0",
@@ -80,5 +79,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "babel-plugin-syntax-jsx": "^6.18.0"
   }
 }
