@@ -164,4 +164,4 @@ Authored and maintained by zero1five.
 
 ## License
 
-[MIT](https://github.com/zero1five/react-sugar/blob/master/LICENSE) &copy; zero1five
+[MIT](https://github.com/zero1five/babel-plugin-react-sugar/blob/master/LICENSE) &copy; zero1five
