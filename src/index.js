@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * 优化
- * 优化
- * 优化
- */
-
 import * as t from 'babel-types';
 import jsx from 'babel-plugin-syntax-jsx';
 import {declare} from '@babel/helper-plugin-utils';
