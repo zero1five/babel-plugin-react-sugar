@@ -28,6 +28,7 @@
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.2",
+    "@babel/parser": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
@@ -57,6 +58,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
+    "babel-plugin-syntax-jsx": "^6.18.0",
     "webpack-dev-server": "^3.1.14"
   },
   "husky": {
@@ -78,8 +80,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "babel-plugin-syntax-jsx": "^6.18.0"
   }
 }

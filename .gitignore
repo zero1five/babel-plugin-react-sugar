@@ -69,3 +69,7 @@ package-lock.json
 
 # macbook
 .DS_Store
+
+.babelrc
+application
+webpack.config.js
