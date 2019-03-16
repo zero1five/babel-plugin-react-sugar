@@ -22,6 +22,7 @@ import {
   randomStr,
   setAttr,
   keyAttrBeing,
+  randomStrExpress,
 } from './utils/utils';
 
 export default declare((api, options) => {
@@ -69,12 +70,12 @@ export default declare((api, options) => {
       if (keyAttrBeing(path.node.body)) {
         return;
       }
-      const ranStr = randomStr();
+
       setAttr(
         path.node.body,
         t.jSXAttribute(
           t.jSXIdentifier('key'),
-          t.JSXExpressionContainer(t.stringLiteral(ranStr))
+          t.JSXExpressionContainer(randomStrExpress())
         )
       );
     },
@@ -84,12 +85,11 @@ export default declare((api, options) => {
         path.node.elements[0].type === 'JSXElement'
       ) {
         path.node.elements.forEach(element => {
-          const ranStr = randomStr();
           setAttr(
             element,
             t.jSXAttribute(
               t.jSXIdentifier('key'),
-              t.JSXExpressionContainer(t.stringLiteral(ranStr))
+              t.JSXExpressionContainer(randomStrExpress())
             )
           );
         });

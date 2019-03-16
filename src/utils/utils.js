@@ -1,3 +1,5 @@
+import {parse} from '@babel/parser';
+
 export const getAndRemoveAttr = (jsxElement, attrName) => {
   const {attributes} = jsxElement.openingElement;
 
@@ -46,4 +48,15 @@ export const randomStr = () => {
     .substring(7)
     .split('')
     .join('.');
+};
+
+export const randomStrExpress = () => {
+  const code = `Math.random()
+    .toString(36)
+    .substring(7)
+    .split('')
+    .join('.');
+  `;
+
+  return parse(code).program.body[0].expression;
 };
