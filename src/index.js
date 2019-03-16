@@ -17,7 +17,12 @@ const VIf = 'v-if';
 import {bindHelper} from './helper/bind';
 import {loopHelper} from './helper/loop';
 
-import {getAndRemoveAttr, randomStr, setAttr} from './utils/utils';
+import {
+  getAndRemoveAttr,
+  randomStr,
+  setAttr,
+  keyAttrBeing,
+} from './utils/utils';
 
 export default declare((api, options) => {
   api.assertVersion(7);
@@ -61,11 +66,15 @@ export default declare((api, options) => {
       if (path.node.body.type !== 'JSXElement') {
         return;
       }
+      if (keyAttrBeing(path.node.body)) {
+        return;
+      }
+      const ranStr = randomStr();
       setAttr(
         path.node.body,
         t.jSXAttribute(
           t.jSXIdentifier('key'),
-          t.JSXExpressionContainer(t.identifier('index'))
+          t.JSXExpressionContainer(t.stringLiteral(ranStr))
         )
       );
     },
@@ -75,11 +84,12 @@ export default declare((api, options) => {
         path.node.elements[0].type === 'JSXElement'
       ) {
         path.node.elements.forEach(element => {
+          const ranStr = randomStr();
           setAttr(
             element,
             t.jSXAttribute(
               t.jSXIdentifier('key'),
-              t.JSXExpressionContainer(t.stringLiteral(randomStr()))
+              t.JSXExpressionContainer(t.stringLiteral(ranStr))
             )
           );
         });
