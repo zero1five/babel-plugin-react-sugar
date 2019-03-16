@@ -51,13 +51,9 @@ export const bindHelper = (nodePath, bindingValue, attrName) => {
   const extracted = extractBindingValue(bindingValue, attrName);
 
   let wrappedExpr = types.callExpression(
-    addDefault(
-      nodePath,
-      path.resolve('babel-plugin-react-sugar/lib/cjs/runtime'),
-      {
-        nameHint: 'binding',
-      }
-    ),
+    addDefault(nodePath, 'babel-plugin-react-sugar/lib/cjs/runtime', {
+      nameHint: 'binding',
+    }),
     [nodePath.node, bindingValue.expression, ...extracted]
   );
 
