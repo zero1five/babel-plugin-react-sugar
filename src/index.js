@@ -1,10 +1,9 @@
 'use strict';
 
 /**
- * 得到对应的attr -》 调用对应的helper来处理
- * 提供对应的attrName -》 来更改
- * v-model v-for
- * 自动添加 key
+ * 优化
+ * 优化
+ * 优化
  */
 
 import * as t from 'babel-types';
@@ -24,7 +23,7 @@ export default declare((api, options) => {
   api.assertVersion(7);
 
   const visitor = {
-    JSXElement(nodePath, state) {
+    JSXElement(nodePath) {
       const {
         bindAttrName = VModel,
         loopAttrName = VFor,
@@ -62,7 +61,8 @@ export default declare((api, options) => {
       if (path.node.body.type !== 'JSXElement') {
         return;
       }
-      path.node.body.openingElement.attributes.push(
+      setAttr(
+        path.node.body,
         t.jSXAttribute(
           t.jSXIdentifier('key'),
           t.JSXExpressionContainer(t.identifier('index'))
@@ -75,12 +75,11 @@ export default declare((api, options) => {
         path.node.elements[0].type === 'JSXElement'
       ) {
         path.node.elements.forEach(element => {
-          const ranStr = randomStr();
           setAttr(
             element,
             t.jSXAttribute(
               t.jSXIdentifier('key'),
-              t.JSXExpressionContainer(t.stringLiteral(ranStr))
+              t.JSXExpressionContainer(t.stringLiteral(randomStr()))
             )
           );
         });
