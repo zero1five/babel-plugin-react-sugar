@@ -5,8 +5,8 @@ export const loopHelper = (nodePath, loopValue, attrName) => {
     expression: {right: forArray, left: forValue},
   } = loopValue;
 
-  let forKey = types.identifier('index');
-  let forItem = nodePath.node;
+  const forKey = types.identifier('index');
+  const forItem = nodePath.node;
 
   let wrappedExpr = types.expressionStatement(
     types.callExpression(

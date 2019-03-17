@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * v-model code from https://github.com/meowtec/babel-plugin-react-binding
+ */
+
 import * as t from 'babel-types';
 import jsx from 'babel-plugin-syntax-jsx';
 import {declare} from '@babel/helper-plugin-utils';
