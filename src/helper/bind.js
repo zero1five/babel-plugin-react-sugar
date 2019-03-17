@@ -1,6 +1,5 @@
 import * as types from 'babel-types';
 const {addDefault} = require('@babel/helper-module-imports');
-const path = require('path');
 
 const extractMemberExpression = memberExpr => {
   /**

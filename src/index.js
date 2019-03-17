@@ -13,7 +13,6 @@ import {loopHelper} from './helper/loop';
 
 import {
   getAndRemoveAttr,
-  randomStr,
   setAttr,
   keyAttrBeing,
   randomStrExpress,

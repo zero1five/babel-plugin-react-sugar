@@ -1,12 +1,10 @@
 import * as types from 'babel-types';
-const {addDefault} = require('@babel/helper-module-imports');
-const path = require('path');
 
 export const loopHelper = (nodePath, loopValue, attrName) => {
-  const v_rfor = loopValue.expression;
+  const {
+    expression: {right: forArray, left: forValue},
+  } = loopValue;
 
-  let forArray = v_rfor.right;
-  let forValue = v_rfor.left;
   let forKey = types.identifier('index');
   let forItem = nodePath.node;
 
