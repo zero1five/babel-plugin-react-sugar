@@ -15,7 +15,7 @@ import {
   getAndRemoveAttr,
   setAttr,
   keyAttrBeing,
-  randomStrExpress,
+  randomStrExpression,
 } from './utils/utils';
 
 export default declare((api, options) => {
@@ -68,7 +68,7 @@ export default declare((api, options) => {
         path.node.body,
         t.jSXAttribute(
           t.jSXIdentifier('key'),
-          t.JSXExpressionContainer(randomStrExpress())
+          t.JSXExpressionContainer(randomStrExpression())
         )
       );
     },
@@ -82,7 +82,7 @@ export default declare((api, options) => {
             element,
             t.jSXAttribute(
               t.jSXIdentifier('key'),
-              t.JSXExpressionContainer(randomStrExpress())
+              t.JSXExpressionContainer(randomStrExpression())
             )
           );
         });

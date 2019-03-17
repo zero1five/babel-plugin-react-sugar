@@ -50,7 +50,7 @@ export const randomStr = () => {
     .join('.');
 };
 
-export const randomStrExpress = () => {
+export const randomStrExpression = () => {
   const code = `Math.random()
     .toString(36)
     .substring(7)
@@ -58,5 +58,11 @@ export const randomStrExpress = () => {
     .join('.');
   `;
 
-  return parse(code).program.body[0].expression;
+  const {
+    program: {
+      body: [{expression}],
+    },
+  } = parse(code);
+
+  return expression;
 };
